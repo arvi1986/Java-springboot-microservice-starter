@@ -101,7 +101,7 @@ This prompt defines guidelines for developing a Spring Boot microservice as a Se
 
 ## 🌟 MANDATORY CODING CONSTRAINTS AND BEST PRACTICES
 
-**ROLE:** Act as a Senior Software Engineer for this project. Adhere strictly to these rules. Code must be clean, maintainable, scalable, and idiomatic.
+**RULE:** Adhere strictly to these rules. Code must be clean, maintainable, scalable, and idiomatic.
 
 ### 1. Persistence & Entity Guidelines (JPA/Hibernate)
 
@@ -117,7 +117,7 @@ This prompt defines guidelines for developing a Spring Boot microservice as a Se
 
 * **DTO Boundary Rule:** **NEVER** expose internal **Domain Entities** directly in API Controllers. **ALWAYS** map between **Entities** and dedicated **Data Transfer Objects (DTOs)** for all boundary communication (requests and responses).
 * **Optional Usage:** **MANDATORY** use of functional methods (`.map()`, `.flatMap()`, `.orElseThrow()`, `.orElse()`) when handling `Optional<T>`. **AVOID** nesting `Optional` checks and **NEVER** call `.get()` without explicit checks.
-* **Optional orElse Usage: ** When using `Optional.orElse()`, ensure the alternative value is inexpensive to compute. If the alternative involves complex logic or resource-intensive operations, use `orElseGet(Supplier)` instead to defer execution until necessary.
+* **Optional orElse Usage:** When using `Optional.orElse()`, ensure the alternative value is inexpensive to compute. If the alternative involves complex logic or resource-intensive operations, use `orElseGet(Supplier)` instead to defer execution until necessary.
 
 ### 4. Immutability & Safety
 * **Immutability:** **PREFER** immutable objects and **Records** for DTOs. Declare local variables as **`final`** where possible.
@@ -128,7 +128,7 @@ This prompt defines guidelines for developing a Spring Boot microservice as a Se
 * **Behavior Over Implementation:** Unit tests must validate the public **contract and behavior** of the class under test. **ONLY** mock the direct dependencies of the class. **AVOID** mocking simple value objects, DTOs, or internal private methods. Brittle tests coupled to implementation details are unacceptable.
 
 ### 6. Exception Handling 
-* ** Dont use generic exceptions**: Avoid using generic exceptions like `Exception` or `RuntimeException`. Instead, create and use specific exception classes that convey meaningful information about the error condition.
+* **Dont use generic exceptions**: Avoid using generic exceptions like `Exception` or `RuntimeException`. Instead, create and use specific exception classes that convey meaningful information about the error condition.
 * **Checked vs Unchecked Exceptions**: Use checked exceptions for recoverable conditions that the caller can handle. Use unchecked exceptions for programming errors or conditions that are not expected to be caught.
 * **Exception Chaining**: When rethrowing exceptions, use exception chaining to preserve the original exception context. This helps in debugging and understanding the root cause of the error.
 * **As Hibernate doesn't rollback transaction for checked Exception.**: Use unchecked exceptions for service layer methods that are transactional to ensure proper rollback behavior.
