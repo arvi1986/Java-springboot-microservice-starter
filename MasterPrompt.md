@@ -45,13 +45,7 @@ This prompt defines guidelines for developing a Spring Boot microservice as a Se
 ---
 
 ## Business Rules
-- Authorization required for file operations
-- File validation for size and type
-- Unique metadata keys per file
-- Cascading delete for file metadata
-- Paginated file listing with filters
-- Admin-only bucket creation
-- Mandatory bucket assignment for files
+- (To be updated based on specific use case)
 
 ---
 
