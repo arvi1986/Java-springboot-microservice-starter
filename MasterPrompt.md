@@ -12,6 +12,7 @@ This prompt defines guidelines for developing a Spring Boot microservice as a Se
 - SLF4J
 - JUnit 5 with Mockito
 - Maven 3
+- Actuator
 
 ---
 
@@ -30,6 +31,7 @@ This prompt defines guidelines for developing a Spring Boot microservice as a Se
 - Distributed tracing using "X-Correlation-ID" header
     - Use provided ID or generate UUID if missing
     - Include ID in MDC for logging
+- The shutdown actuator endpoint must be accessed only by authorized users with role `ADMIN`
 
 ---
 

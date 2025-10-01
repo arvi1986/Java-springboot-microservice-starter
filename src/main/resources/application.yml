@@ -27,13 +27,11 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
-      base-path: /api/actuator
-  endpoint:
-    health:
-      show-details: always
-    shutdown:
-      enabled: true
+        include: "health,info,metrics,loggers,threaddump,env"
+      base-path: /actuator
+      endpoint:
+        health:
+          show-details: always
 
 logging:
   level:

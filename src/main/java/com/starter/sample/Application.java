@@ -25,20 +25,8 @@ public class Application {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                // Pattern options:
-                // "http://localhost:[*]" - allows any localhost port
-                // "https://*.example.com" - allows all subdomains of example.com
-                // "http://localhost:3000" - specific origin
-                // "http://192.168.1.*" - allows IP range
-                // Multiple patterns can be specified
                 registry.addMapping("/api/**")
-                        .allowedOriginPatterns(
-                            "http://localhost:[*]",          // Any localhost port
-                            "https://*.yourdomain.com",      // All subdomains
-                            "http://localhost:3000",         // Specific development port
-                            "https://app.yourdomain.com",    // Production application
-                            "http://127.0.0.1:[*]"          // Local IP with any port
-                        )
+                        .allowedOriginPatterns("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
                         .allowedHeaders("*")
                         .exposedHeaders("X-Correlation-ID")
