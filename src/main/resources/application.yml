@@ -15,7 +15,7 @@ spring:
     show-sql: true
   h2:
     console:
-      enabled: true
+      enabled: false
       path: /h2-console
 
 server:
@@ -35,19 +35,19 @@ management:
 
 logging:
   level:
-    root: INFO
-    com.elevator: DEBUG
-    org.springframework: INFO
+    root: WARN  # Changed from INFO to WARN
+    com.starter.sample: INFO
+    org.springframework: WARN
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-
-
 
 security:
   oauth2:
     resourceserver:
       jwt:
         jwk-set-uri: http://localhost:8080/.well-known/jwks.json
+
 jwt:
   secret: "your-256-bit-secret-key-for-jwt-signing-purposes"
   expiration: 3600000  # 1 hour in milliseconds
+
