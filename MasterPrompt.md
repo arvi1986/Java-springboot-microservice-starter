@@ -28,11 +28,13 @@ This prompt defines guidelines for developing a Spring Boot microservice as a Se
 
 ### Authentication & Tracing
 - JWT token authentication via "Authorization" header
+  - Build a securityFilterChain bean to configure security
+    - allowing auth endpoints to be accessed without authentication
+    - Actuator shutdown endpoint only by ADMIN role
+  - Build JWTTokenProvider for validating JWT tokens
 - Distributed tracing using "X-Correlation-ID" header
     - Use provided ID or generate UUID if missing
     - Include ID in MDC for logging
-- The shutdown actuator endpoint must be accessed only by authorized users with role `ADMIN`
-
 ---
 
 ## Functional Requirements
@@ -47,7 +49,7 @@ This prompt defines guidelines for developing a Spring Boot microservice as a Se
 ---
 
 ## Business Rules
-- (To be updated based on specific use case)
+* (To be updated based on specific use case)
 
 ---
 
@@ -129,7 +131,7 @@ This prompt defines guidelines for developing a Spring Boot microservice as a Se
 
 * **Behavior Over Implementation:** Unit tests must validate the public **contract and behavior** of the class under test. **ONLY** mock the direct dependencies of the class. **AVOID** mocking simple value objects, DTOs, or internal private methods. Brittle tests coupled to implementation details are unacceptable.
 
-### 6. Exception Handling 
+### 6. Exception Handling
 * **Dont use generic exceptions**: Avoid using generic exceptions like `Exception` or `RuntimeException`. Instead, create and use specific exception classes that convey meaningful information about the error condition.
 * **Checked vs Unchecked Exceptions**: Use checked exceptions for recoverable conditions that the caller can handle. Use unchecked exceptions for programming errors or conditions that are not expected to be caught.
 * **Exception Chaining**: When rethrowing exceptions, use exception chaining to preserve the original exception context. This helps in debugging and understanding the root cause of the error.
